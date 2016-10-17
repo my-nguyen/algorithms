@@ -58,10 +58,11 @@ class MergeSort {
    public static void main(String[] args) {
       if (args.length != 0) {
          int size = Integer.parseInt(args[0]);
-         int[] array = MyArray.generate(size);
-         System.out.println("generated: " + MyArray.toString(array));
-         sort(array, 0, array.length-1);
-         System.out.println("sorted:    " + MyArray.toString(array));
+         MyArray array = new MyArray(size);
+         array.generate();
+         System.out.println("generated: " + array);
+         sort(array.array, 0, size-1);
+         System.out.println("sorted:    " + array);
       }
    }
 }
