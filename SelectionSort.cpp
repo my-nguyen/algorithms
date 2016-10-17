@@ -3,7 +3,7 @@
 using namespace std;
 
 void sort(int array[], int size) {
-   // move leftmost element from left to right
+   // process the leftmost element from left to right
    for (int sorted = 0; sorted < size-1; sorted++) {
       int min = sorted;
       // look for element with value less than the leftmost element (array[sorted])
