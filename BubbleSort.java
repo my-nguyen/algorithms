@@ -4,7 +4,8 @@ class BubbleSort {
       for (int i = size; i > 0; i--) {
          for (int j = 0; j < i-1; j++) {
             // compare 2 adjacent elements and swap them if necessary to ensure
-            // the left element is smaller than the right element
+            // the left element is smaller than the right element. At the end of
+            // each pass, the largest value of that pass is moved to its proper place
             if (array[j] > array[j+1]) {
                int tmp = array[j];
                array[j] = array[j+1];

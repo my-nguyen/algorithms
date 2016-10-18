@@ -1,3 +1,5 @@
+import java.util.*;
+
 class Node {
    int data;
    Node left;
@@ -10,25 +12,24 @@ class Node {
    }
 }
 
-class Tree {
+class BinaryTree {
    Node root;
 
-   Tree() {
+   BinaryTree() {
       root = null;
    }
 
    Node search(int number) {
       Node current = root;
-      while (current.data != number) {
-         if (current.data > number)
+      while (current != null) {
+         if (current.data == number)
+            return current;
+         else if (number < current.data)
             current = current.left;
          else
             current = current.right;
-
-         if (current == null)
-            return null;
       }
-      return current;
+      return null;
    }
 
    void insert(int data) {
@@ -62,11 +63,21 @@ class Tree {
       }
    }
 
-   public String toString() {
+   String preOrderString() {
       StringBuilder builder = new StringBuilder();
-      // preorder(builder, root);
+      preorder(builder, root);
+      return builder.toString();
+   }
+
+   String inOrderString() {
+      StringBuilder builder = new StringBuilder();
       inorder(builder, root);
-      // postorder(builder, root);
+      return builder.toString();
+   }
+
+   String postOrderString() {
+      StringBuilder builder = new StringBuilder();
+      postorder(builder, root);
       return builder.toString();
    }
 
@@ -102,24 +113,23 @@ class Tree {
       // System.out.println("current: " + current.data);
       builder.append(current.data).append(" ");
    }
-}
 
-class BinarySearchTree {
-   public static void main(String[] args) {
-      if (args.length != 0) {
-         int size = Integer.parseInt(args[0]);
-         Tree tree = new Tree();
-         /*
-         int[] numbers = { 8, 3, 9, 1, 5, 4, 12, 11 };
-         for (int i = 0; i < numbers.length; i++)
-            tree.insert(numbers[i]);
-            */
-         MyArray array = new MyArray(size, false);
-         array.generate();
-         System.out.println(array);
-         for (int i = 0; i < array.array.length; i++)
-            tree.insert(array.array[i]);
-         System.out.println(tree);
+   String breathFirst() {
+      StringBuilder builder = new StringBuilder();
+      if (root == null)
+         return builder.toString();
+
+      Deque<Node> queue = new LinkedList<>();
+      queue.clear();
+      queue.add(root);
+      while (!queue.isEmpty()) {
+         Node node = queue.remove();
+         builder.append(node.data).append(" ");
+         if (node.left != null)
+            queue.add(node.left);
+         if (node.right != null)
+            queue.add(node.right);
       }
+      return builder.toString();
    }
 }

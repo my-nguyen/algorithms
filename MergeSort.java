@@ -13,43 +13,43 @@ class MergeSort {
 
       /// remaining is the bulk of the work: to merge 2 sorted subarrays
       // make a copy of the left partition
-      int[] leftpartition = new int[middle-low+1];
+      int[] leftPartition = new int[middle-low+1];
       for (int i = low; i <= middle; i++)
-         leftpartition[i-low] = array[i];
+         leftPartition[i-low] = array[i];
       // make a copy of the right partition
-      int[] rightpartition = new int[high-middle];
+      int[] rightPartition = new int[high-middle];
       for (int i = middle+1; i <= high; i++)
-         rightpartition[i-middle-1] = array[i];
+         rightPartition[i-middle-1] = array[i];
 
-      // index to leftpartition
+      // index to leftPartition
       int i = 0;
-      // index to rightpartition
+      // index to rightPartition
       int j = 0;
       // index to array
       int k = low;
-      while (i < leftpartition.length && j < rightpartition.length) {
-         if (leftpartition[i] <= rightpartition[j]) {
-            // copy to array those in leftpartition that are smaller than those
-            // in rightpartition
-            array[k] = leftpartition[i];
+      while (i < leftPartition.length && j < rightPartition.length) {
+         if (leftPartition[i] <= rightPartition[j]) {
+            // copy to array those in leftPartition that are smaller than those
+            // in rightPartition
+            array[k] = leftPartition[i];
             i++;
          } else {
-            // copy to array those in rightpartition that are smaller than those
-            // in leftpartition
-            array[k] = rightpartition[j];
+            // copy to array those in rightPartition that are smaller than those
+            // in leftPartition
+            array[k] = rightPartition[j];
             j++;
          }
          k++;
       }
 
-      // copy any remaining uncopied elements in leftpartition and rightpartition
-      while (i < leftpartition.length) {
-         array[k] = leftpartition[i];
+      // copy any remaining uncopied elements in leftPartition and rightPartition
+      while (i < leftPartition.length) {
+         array[k] = leftPartition[i];
          i++;
          k++;
       }
-      while (j < rightpartition.length) {
-         array[k] = rightpartition[j];
+      while (j < rightPartition.length) {
+         array[k] = rightPartition[j];
          j++;
          k++;
       }

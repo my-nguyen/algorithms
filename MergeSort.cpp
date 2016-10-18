@@ -17,50 +17,50 @@ void sort(int array[], int low, int high) {
    /// remaining is the bulk of the work: to merge 2 sorted subarrays
    // make a copy of the left partition
    int leftSize = middle-low+1;
-   int* leftpartition = new int[leftSize];
+   int* leftPartition = new int[leftSize];
    for (int i = low; i <= middle; i++)
-      leftpartition[i-low] = array[i];
+      leftPartition[i-low] = array[i];
    // make a copy of the right partition
    int rightSize = high-middle;
-   int* rightpartition = new int[rightSize];
+   int* rightPartition = new int[rightSize];
    for (int i = middle+1; i <= high; i++)
-      rightpartition[i-middle-1] = array[i];
+      rightPartition[i-middle-1] = array[i];
 
-   // index to leftpartition
+   // index to leftPartition
    int i = 0;
-   // index to rightpartition
+   // index to rightPartition
    int j = 0;
    // index to array
    int k = low;
    while (i < leftSize && j < rightSize) {
-      if (leftpartition[i] <= rightpartition[j]) {
-         // copy to array those in leftpartition that are smaller than those
-         // in rightpartition
-         array[k] = leftpartition[i];
+      if (leftPartition[i] <= rightPartition[j]) {
+         // copy to array those in leftPartition that are smaller than those
+         // in rightPartition
+         array[k] = leftPartition[i];
          i++;
       } else {
-         // copy to array those in rightpartition that are smaller than those
-         // in leftpartition
-         array[k] = rightpartition[j];
+         // copy to array those in rightPartition that are smaller than those
+         // in leftPartition
+         array[k] = rightPartition[j];
          j++;
       }
       k++;
    }
 
-   // copy any remaining uncopied elements in leftpartition and rightpartition
+   // copy any remaining uncopied elements in leftPartition and rightPartition
    while (i < leftSize) {
-      array[k] = leftpartition[i];
+      array[k] = leftPartition[i];
       i++;
       k++;
    }
    while (j < rightSize) {
-      array[k] = rightpartition[j];
+      array[k] = rightPartition[j];
       j++;
       k++;
    }
 
-   delete [] rightpartition;
-   delete [] leftpartition;
+   delete [] rightPartition;
+   delete [] leftPartition;
 }
 
 int main(int argc, char** argv) {
